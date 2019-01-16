@@ -1,4 +1,4 @@
-# -*-coding:utf-8 -*-
+﻿# -*-coding:utf-8 -*-
 import sys  
 reload(sys)  
 sys.setdefaultencoding('utf8')   
@@ -11,12 +11,10 @@ def send_to_all_group():
 	rooms=itchat.get_chatrooms(update=True)
 	if rooms is not None:
 		for room in rooms:
-			#print room['NickName'].encode("GBK",'ignore')
 			try:
 				message_need_send="To \"%s\" 的朋友们 "%room['NickName'].encode("utf-8",'ignore')+"祝福语"
-				print u'已发送：',room['NickName'].encode("GBK",'ignore')
+				print u'消息已发送至:',room['NickName'].encode("GBK",'ignore')
 				itchat.send(u'%s'%message_need_send,room['UserName'])
-				#itchat.send_image('./handle_happy_new_year.jpg',room['UserName'])
 			except UnicodeEncodeError:
 				pass
 	else:
